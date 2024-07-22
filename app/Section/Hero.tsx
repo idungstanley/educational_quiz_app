@@ -7,7 +7,7 @@ import Login from '../_components/Login/Login'
 const Hero = () => {
   return (
     <div
-      className="w-full flex items-center justify-center h-screen"
+      className="w-full flex items-center justify-center h-screen flex-col lg:flex-row p-4"
       style={{
         backgroundImage: "url('laptop.jpg')",
         backgroundRepeat: 'no-repeat',
@@ -15,7 +15,7 @@ const Hero = () => {
         backgroundPosition: 'center',
       }}
     >
-      <div className="w-1/3 gap-8 flex items-start flex-col">
+      <div className="lg:w-1/3 w-full mb-4 gap-8 flex items-start flex-col">
         <div className="flex items-start flex-col">
           <Text text="FOR A BETTER FUTURE" textColor="text-yellow-200" />
           <Header

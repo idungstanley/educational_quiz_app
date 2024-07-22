@@ -10,6 +10,7 @@ import { IoChevronBack } from 'react-icons/io5'
 import SearchWithIcon from '../Inputs/SearchInput'
 import { navItems } from '@/app/constants';
 import { MdQuiz } from 'react-icons/md';
+import Image from 'next/image';
 
 const Navbar = () => {
   const pathname = usePathname()
@@ -46,7 +47,7 @@ const Navbar = () => {
       <div className="flex items-center w-full px-4 justify-around lg:px-14">
         <Link href="/">
           <div className="flex items-center justify-center w-full lg:justify-start text-[30px]">
-            <MdQuiz />
+            <Image src="/quiz.png" alt="logo" width={100} height={100} />
           </div>
         </Link>
         <MobileNav

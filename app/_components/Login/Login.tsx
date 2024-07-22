@@ -7,7 +7,7 @@ import Button from '../Buttons/Button'
 
 const Login = () => {
   return (
-    <div className="text-gray-800 flex flex-col w-[400px]  p-10 items-center justify-center bg-white rounded-lg">
+    <div className="text-gray-800 flex flex-col max-w-[400px]  p-10 items-center justify-center bg-white rounded-lg">
       <Header text="Get Started today!" />
       <Text text="Find your test. Engage your teacher. Build your career. Do it again with E-test platform!" />
       <form action="" className='w-full flex gap-4 flex-col'>
