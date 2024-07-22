@@ -91,3 +91,15 @@ export interface HamburgerProps {
     toggle: React.Dispatch<React.SetStateAction<boolean>>;
     classname?: string;
 }
+
+export type LoginProps = {
+    email: string;
+    password: string;
+};
+
+export interface TextWithLinksProps {
+    linkRoute: string;
+    linkLabel: string;
+    text?: string;
+    textPosition?: string;
+}

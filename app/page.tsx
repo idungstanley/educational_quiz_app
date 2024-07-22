@@ -6,8 +6,7 @@ import OurFeatures from './Section/OurFeatures'
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col">
-      <Navbar />
+    <main className="flex flex-col">
       <Hero />
       <OurFeatures />
       <HowItWorks/>

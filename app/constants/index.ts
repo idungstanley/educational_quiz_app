@@ -2,8 +2,6 @@ import program from '@/public/programing.png';
 import choose from '@/public/choose.png';
 import score from '@/public/score.png';
 import leaderboard from '@/public/leaderboard.png';
-import { one, three, two } from '../assets';
-import oneIm from '@/app/assets/one.png';
 import { MdAssignmentAdd, MdMobileFriendly, MdOutlineConnectWithoutContact } from 'react-icons/md';
 
 export const navItems = [

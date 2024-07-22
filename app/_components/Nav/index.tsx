@@ -8,9 +8,9 @@ import { authRoutes, publicRoutes } from '@/app/constants/routes'
 import NavRightOptions from './components/NavRightOptions'
 import { IoChevronBack } from 'react-icons/io5'
 import SearchWithIcon from '../Inputs/SearchInput'
-import { navItems } from '@/app/constants';
-import { MdQuiz } from 'react-icons/md';
-import Image from 'next/image';
+import { navItems } from '@/app/constants'
+import { MdQuiz } from 'react-icons/md'
+import Image from 'next/image'
 
 const Navbar = () => {
   const pathname = usePathname()
@@ -20,8 +20,11 @@ const Navbar = () => {
 
   const config = useMemo(
     () => [
-      { active: publicRoutes.includes(pathname), element: <DesktopNav /> },
-      { active: authRoutes.includes(pathname), element: <></> },
+      {
+        active:
+          publicRoutes.includes(pathname) || authRoutes.includes(pathname),
+        element: <DesktopNav />,
+      },
       {
         active:
           !authRoutes.includes(pathname) && !publicRoutes.includes(pathname),
@@ -43,11 +46,11 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="z-[999] w-full h-[70px] border-b text-black flex items-center justify-around bg-white border-gray-200">
+    <nav className="z-[999] w-full h-[70px] border-b text-black flex items-center justify-around bg-white border-gray-200 flex-shrink-0">
       <div className="flex items-center w-full px-4 justify-around lg:px-14">
         <Link href="/">
           <div className="flex items-center justify-center w-full lg:justify-start text-[30px]">
-            <Image src="/quiz.png" alt="logo" width={100} height={100} />
+            <Image src="/quiz.png" alt="logo" width={50} height={50} />
           </div>
         </Link>
         <MobileNav
