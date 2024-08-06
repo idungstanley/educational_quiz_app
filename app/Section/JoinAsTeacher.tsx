@@ -17,7 +17,7 @@ const JoinAsTeacher = () => {
     <div
       className="w-full flex items-center justify-center h-screen gap-10"
       style={{
-        backgroundImage: "url('teacher.jpg')",
+        backgroundImage: "url('teacher.png')",
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: 'center',

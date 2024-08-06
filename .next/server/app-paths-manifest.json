@@ -1,16 +1,3 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/page": "app/page.js",
-  "/(pages)/(protected)/dashboard/page": "app/(pages)/(protected)/dashboard/page.js",
-  "/(pages)/(protected)/quiz/page": "app/(pages)/(protected)/quiz/page.js",
-  "/(pages)/(protected)/score-history/page": "app/(pages)/(protected)/score-history/page.js",
-  "/(pages)/(protected)/attempt/[id]/quiz/page": "app/(pages)/(protected)/attempt/[id]/quiz/page.js",
-  "/(pages)/(protected)/quiz-builder/[id]/page": "app/(pages)/(protected)/quiz-builder/[id]/page.js",
-  "/(pages)/(protected)/leaderboard/page": "app/(pages)/(protected)/leaderboard/page.js",
-  "/(pages)/(protected)/attempt/[id]/page": "app/(pages)/(protected)/attempt/[id]/page.js",
-  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
-  "/(pages)/auth/login/page": "app/(pages)/auth/login/page.js",
-  "/(pages)/auth/signup/page": "app/(pages)/auth/signup/page.js",
-  "/(pages)/auth/tutor-signup/page": "app/(pages)/auth/tutor-signup/page.js"
+  "/page": "app/page.js"
 }

@@ -9,7 +9,7 @@ const Hero = () => {
     <div
       className="w-full flex items-center justify-center h-screen flex-col lg:flex-row p-4"
       style={{
-        backgroundImage: "url('laptop.jpg')",
+        backgroundImage: "url('laptop.png')",
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
