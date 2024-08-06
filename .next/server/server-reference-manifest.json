@@ -1,5 +1,24 @@
 {
-  "node": {},
+  "node": {
+    "2e9e5799ff786a4a1efbcbbc3829eaeb2f5d88a9": {
+      "workers": {
+        "app/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fmacbookair%2FDesktop%2Feducational_quiz_app%2Fapp%2Flib%2Faction.ts%22%2C%5B%22SignIn%22%5D%5D%2C%5B%22%2FUsers%2Fmacbookair%2FDesktop%2Feducational_quiz_app%2Fapp%2Flib%2FsignOut.tsx%22%2C%5B%22SignOut%22%5D%5D%5D&__client_imported__=true!"
+      },
+      "layer": {
+        "app/page": "action-browser"
+      }
+    },
+    "5c16d47674e7a23f05e722d385edc8485b74ef1f": {
+      "workers": {
+        "app/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fmacbookair%2FDesktop%2Feducational_quiz_app%2Fapp%2Flib%2Faction.ts%22%2C%5B%22SignIn%22%5D%5D%2C%5B%22%2FUsers%2Fmacbookair%2FDesktop%2Feducational_quiz_app%2Fapp%2Flib%2FsignOut.tsx%22%2C%5B%22SignOut%22%5D%5D%5D&__client_imported__=true!",
+        "app/_not-found/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fmacbookair%2FDesktop%2Feducational_quiz_app%2Fapp%2Flib%2FsignOut.tsx%22%2C%5B%22SignOut%22%5D%5D%5D&__client_imported__=true!"
+      },
+      "layer": {
+        "app/page": "action-browser",
+        "app/_not-found/page": "action-browser"
+      }
+    }
+  },
   "edge": {},
   "encryptionKey": "FlrUPvMJcXmZmnGNhpQ+cQJ/2t+LY2OrXH86s2zBVK4="
 }
