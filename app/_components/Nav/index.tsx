@@ -4,12 +4,10 @@ import React, { useMemo, useState } from 'react'
 import DesktopNav from './DesktopNav'
 import { usePathname, useRouter } from 'next/navigation'
 import MobileNav from './MobileNav'
-import { authRoutes, publicRoutes } from '@/app/constants/routes'
+import { authRoutes, publicRoutes, showNavItem } from '@/app/constants/routes'
 import NavRightOptions from './components/NavRightOptions'
-import { IoChevronBack } from 'react-icons/io5'
 import SearchWithIcon from '../Inputs/SearchInput'
 import { navItems } from '@/app/constants'
-import { MdQuiz } from 'react-icons/md'
 import Image from 'next/image'
 
 const Navbar = () => {
@@ -17,6 +15,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState<boolean>(false)
   const isPublicRoute = publicRoutes.includes(pathname)
   const isAuthRoute = authRoutes.includes(pathname)
+  const isAllRoute = showNavItem.includes(pathname)
 
   const config = useMemo(
     () => [
@@ -46,34 +45,43 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="z-[999] w-full h-[70px] border-b text-black flex items-center justify-around bg-white border-gray-200 flex-shrink-0">
+    <nav className="z-[999] w-full h-[50px] border-b text-black flex items-center justify-around bg-white border-gray-200 flex-shrink-0 fixed">
       <div className="flex items-center w-full px-4 justify-around lg:px-14">
-        <Link href="/">
-          <div className="flex items-center justify-center w-full lg:justify-start text-[30px]">
-            <Image src="/quiz.png" alt="logo" width={50} height={50} />
-          </div>
-        </Link>
-        <MobileNav
-          isOpen={menuOpen}
-          setOpen={setMenuOpen}
-          headerConfigPath={!isPublicRoute && !isAuthRoute}
-        />
-        {(isAuthRoute || isPublicRoute) && (
-          <div className="lg:flex items-start gap-6 w-full text-black ml-9 hidden">
+        <div className="flex items-center gap-4">
+          <Link href="/">
+            <div className="flex items-center justify-center w-full lg:justify-start text-[30px]">
+              <Image src="/quiz.png" alt="logo" width={50} height={50} />
+            </div>
+          </Link>
+          {!isAllRoute && (
+            <SearchWithIcon
+              value=""
+              placeholder="Search"
+              onChange={() => ({})}
+            />
+          )}
+        </div>
+        {!isAllRoute && (
+          <div className="lg:flex items-start gap-6 text-black ml-14 hidden">
             {navItems.map((item, index) => (
               <div
                 key={index}
                 onClick={() => handleClick(item.route)}
-                className={'cursor-pointer'}
+                className={`cursor-pointer h-[50px] w-[100px] text-nowrap flex flex-col justify-center items-center gap-1 ${
+                  pathname === item.route ? 'border-base border-b-2' : ''
+                }`}
               >
-                <p>{item.name}</p>
+                <item.image />
+                <p className="text-[14px]">{item.name}</p>
               </div>
             ))}
           </div>
         )}
-        {!isPublicRoute && !isAuthRoute && (
-          <SearchWithIcon value="" placeholder="Search" onChange={() => ({})} />
-        )}
+        <MobileNav
+          isOpen={menuOpen}
+          setOpen={setMenuOpen}
+          headerConfigPath={!isAllRoute}
+        />
         {headerData ? headerData.element : null}
       </div>
     </nav>

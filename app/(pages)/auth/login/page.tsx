@@ -3,7 +3,7 @@ import Button from '@/app/_components/Buttons/Button'
 import Header from '@/app/_components/Header'
 import Input from '@/app/_components/Inputs'
 import Text from '@/app/_components/Text'
-import TextWithLinks from '@/app/_components/Text/TextWithLinks';
+import TextWithLinks from '@/app/_components/Text/TextWithLinks'
 import { SignIn } from '@/app/lib/action'
 import Notify from '@/app/lib/notify'
 import { LoginProps } from '@/app/types'
@@ -15,6 +15,7 @@ import React, { useState } from 'react'
 import { FaEye, FaEyeSlash, FaRegUser } from 'react-icons/fa'
 
 const LoginPage = () => {
+  const [isLoading, setIsLoading] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
 
   const togglePasswordVisibility = () => {
@@ -30,19 +31,23 @@ const LoginPage = () => {
     validationSchema: loginSchema,
     onSubmit: async (values: LoginProps) => {
       try {
+        setIsLoading(true)
         await SignIn(values)
       } catch (error) {
         console.log(error)
         if (error instanceof AuthError) {
           switch (error.type) {
             case 'CredentialsSignin':
-              return Notify({ type: 'error', text: 'Invalid Credentials' })
+              Notify({ type: 'error', text: 'Invalid Credentials' })
 
             default:
-              return Notify({ type: 'error', text: 'Something went wrong' })
+              Notify({ type: 'error', text: 'Something went wrong' })
           }
         }
+        Notify({ type: 'error', text: 'Invalid Credentials' })
         throw error
+      } finally {
+        setIsLoading(false)
       }
     },
   })
@@ -96,6 +101,7 @@ const LoginPage = () => {
         <div className="flex flex-col items-center justify-between w-full gap-4 text-center lg:justify-center mt-4">
           <Button
             type="submit"
+            loading={isLoading}
             label="Sign in"
             width="w-full"
             buttonStyle="custom"

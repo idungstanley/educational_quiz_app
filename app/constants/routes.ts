@@ -12,7 +12,9 @@ export const publicRoutes = ['/'];
  * These routes will redirect logged in users to /dashboard
  * @type {string[]}
  */
-export const authRoutes = ['/auth/login', '/auth/signup', '/auth/forgot-password', '/auth/onboarding/setup', '/auth/reset-password'];
+export const authRoutes = ['/auth/login', '/auth/signup', '/auth/tutor-signup', '/auth/forgot-password', '/auth/onboarding/setup', '/auth/reset-password'];
+
+export const showNavItem = ['/auth/login', '/auth/signup', '/auth/forgot-password', '/auth/onboarding/setup', '/auth/reset-password', '/'];
 
 /**
  * The prefix for api authentication routes

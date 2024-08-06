@@ -1,3 +1,5 @@
+import { StaticImageData } from "next/image";
+import { ReactNode } from "react";
 
 export interface SearchInputProps {
     value: string;
@@ -8,6 +10,43 @@ export interface SearchInputProps {
     textColor?: string;
     borderColor?: string;
     placeholderColor?: string;
+}
+
+export interface CommandProps {
+    commandVisible: boolean;
+    children?: ReactNode;
+    showCloseIcon?: boolean;
+    styling?: string;
+    width?: string;
+    handleAction?: () => void;
+    setPopup: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export interface Option {
+    text: string;
+    isCorrect: boolean;
+    _id?: string
+}
+
+export interface Question {
+    questionText: string;
+    quizId: string;
+    file: string | null;
+    isMultipleSelect: boolean;
+    marksAwarded: number;
+    allotedTime: number;
+    allotedMetric: string;
+    options: Option[];
+}
+export interface pageProps {
+    params: { id: string; };
+}
+
+export interface RowItem {
+    score: string;
+    time: string;
+    average_time: string;
+    full_name: string;
 }
 
 export interface InputDataTypes {

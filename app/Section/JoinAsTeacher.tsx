@@ -1,12 +1,18 @@
+'use client'
 import React from 'react'
 import Text from '../_components/Text'
 import Header from '../_components/Header'
 import Button from '../_components/Buttons/Button'
-import Login from '../_components/Login/Login'
 import { FaCheckCircle } from 'react-icons/fa'
 import { benefitsOfTeacher } from '../constants'
+import { useRouter } from 'next/navigation'
 
 const JoinAsTeacher = () => {
+  const router = useRouter()
+  const handleClick = () => {
+    router.push('/auth/tutor-signup')
+  }
+
   return (
     <div
       className="w-full flex items-center justify-center h-screen gap-10"
@@ -20,7 +26,7 @@ const JoinAsTeacher = () => {
       <div className="lg:w-1/3 w-full flex items-center flex-col">
         <div className="flex items-start flex-col gap-6 bg-white bg-opacity-80 rounded-lg p-6">
           <Header text="WANT TO JOIN AS A TEACHER?" textColor="text-black" />
-          <div className='flex items-start gap-2 flex-col'>
+          <div className="flex items-start gap-2 flex-col">
             {benefitsOfTeacher.map((item, index) => (
               <div className="flex items-center gap-4" key={index}>
                 <FaCheckCircle className="text-base" />
@@ -36,6 +42,7 @@ const JoinAsTeacher = () => {
             type="button"
             label="Join As A Teacher"
             width="w-fit"
+            onClick={handleClick}
             buttonStyle="custom"
             height="h-[40px]"
             roundedLeft={false}

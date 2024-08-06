@@ -3,19 +3,20 @@ import Button from '@/app/_components/Buttons/Button'
 import Header from '@/app/_components/Header'
 import Input from '@/app/_components/Inputs'
 import Text from '@/app/_components/Text'
-import TextWithLinks from '@/app/_components/Text/TextWithLinks';
+import TextWithLinks from '@/app/_components/Text/TextWithLinks'
+import { SignupProps } from '@/app/features/auth/auth.interface'
+import { useRegisterMutation } from '@/app/features/auth/authService'
 import { SignIn } from '@/app/lib/action'
 import Notify from '@/app/lib/notify'
-import { LoginProps } from '@/app/types'
-import { loginSchema } from '@/app/validationSchemas'
+import { signupSchema } from '@/app/validationSchemas'
 import { useFormik } from 'formik'
 import { AuthError } from 'next-auth'
-import Link from 'next/link'
 import React, { useState } from 'react'
 import { FaEye, FaEyeSlash, FaRegUser } from 'react-icons/fa'
-import { MdMarkEmailUnread } from 'react-icons/md';
+import { MdMarkEmailUnread } from 'react-icons/md'
 
 const SignupPage = () => {
+  const { mutateAsync, isPending } = useRegisterMutation()
   const [showPassword, setShowPassword] = useState(false)
 
   const togglePasswordVisibility = () => {
@@ -26,11 +27,18 @@ const SignupPage = () => {
     initialValues: {
       email: '',
       password: '',
+      fullName: '',
     },
     validateOnBlur: true,
-    validationSchema: loginSchema,
-    onSubmit: async (values: LoginProps) => {
+    validationSchema: signupSchema,
+    onSubmit: async (values: SignupProps) => {
       try {
+        await mutateAsync({
+          fullName: values.fullName,
+          password: values.password,
+          role: 'user',
+          email: values.email,
+        })
         await SignIn(values)
       } catch (error) {
         console.log(error)
@@ -38,7 +46,6 @@ const SignupPage = () => {
           switch (error.type) {
             case 'CredentialsSignin':
               return Notify({ type: 'error', text: 'Invalid Credentials' })
-
             default:
               return Notify({ type: 'error', text: 'Something went wrong' })
           }
@@ -47,6 +54,7 @@ const SignupPage = () => {
       }
     },
   })
+
   return (
     <div className="w-[80%] flex flex-col items-start gap-3">
       <Header text="Sign Up" />
@@ -59,7 +67,7 @@ const SignupPage = () => {
             name="fullName"
             width="w-full"
             placeholder="Enter full name"
-            value={formik.values.email}
+            value={formik.values.fullName}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             height="h-10 rounded-md"
@@ -104,6 +112,7 @@ const SignupPage = () => {
         </div>
         <div className="flex flex-col items-center justify-between w-full gap-4 text-center lg:justify-center mt-4">
           <Button
+            loading={isPending}
             type="submit"
             label="Sign up"
             width="w-full"

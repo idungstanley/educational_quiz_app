@@ -1,9 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { setupListeners } from '@reduxjs/toolkit/query';
+import authSlice from '../features/auth/authSlice';
+import quizSlice from '../features/quiz/quizSlice';
 
 export const store = configureStore({
-    reducer: {},
+    reducer: {
+        auth: authSlice,
+        quiz: quizSlice
+    },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
             serializableCheck: false

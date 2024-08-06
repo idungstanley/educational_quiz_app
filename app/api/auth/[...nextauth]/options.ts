@@ -2,7 +2,12 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
+import { CredentialsSignin, NextAuthConfig } from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
+
+class InvalidLoginError extends CredentialsSignin {
+    code = 'Invalid identifier or password';
+}
 
 export const options = {
     session: {
@@ -30,7 +35,7 @@ export const options = {
                 };
                 // Add logic here to look up the user from the credentials supplied
                 try {
-                    const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/login`, {
+                    const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/auth/login`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -46,7 +51,7 @@ export const options = {
                     }
                 } catch (error) {
                     const data = (error as any).response.data;
-                    throw new Error();
+                    throw new InvalidLoginError();
                 }
             }
         })
@@ -62,4 +67,4 @@ export const options = {
             return session;
         }
     }
-}
+} satisfies NextAuthConfig;

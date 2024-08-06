@@ -45,6 +45,7 @@ export function Providers({ children }: React.PropsWithChildren) {
     }
     Notify({ type: 'success', text: title })
   }
+  
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
