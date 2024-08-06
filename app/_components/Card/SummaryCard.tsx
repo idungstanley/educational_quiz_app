@@ -10,7 +10,7 @@ const SummaryCard = ({ title, count }: { title: string; count: number }) => {
         <BsThreeDotsVertical />
       </span>
       <Text text={title} />
-      <Header text={count} />
+      <Header text={`${count}`} />
     </div>
   )
 }
